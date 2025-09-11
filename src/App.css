@@ -1,38 +1,100 @@
-.App {
-  text-align: center;
+/* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+  --primary-color: #2c3e50; /* Dark blue/grey */
+  --secondary-color: #3498db; /* Bright blue */
+  --text-color: #333;
+  --light-text-color: #ecf0f1; /* Light grey for dark backgrounds */
+  --background-color: #f4f7f6; /* Off-white */
+  --card-background: #ffffff;
+  --border-color: #e0e0e0;
+  --animation-duration: 0.5s;
+  --animation-delay: 0.1s;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.portfolio-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+  animation: fadeIn 1s ease-out forwards;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+main {
+  padding: 20px 0;
 }
 
-.App-link {
-  color: #61dafb;
+h1, h2, h3 {
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 15px;
+  animation: slideInFromTop var(--animation-duration) ease-out forwards;
+  opacity: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h2 {
+  font-size: 1.8em;
+  border-bottom: 2px solid var(--secondary-color);
+  padding-bottom: 10px;
+  margin-bottom: 25px;
 }
+
+h3 {
+  font-size: 1.3em;
+  margin-top: 20px;
+}
+
+p, li {
+  font-size: 1em;
+  margin-bottom: 8px;
+}
+
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: color var(--animation-duration) ease;
+}
+
+a:hover {
+  color: var(--primary-color);
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInFromTop {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Adding animations to list items for progressive reveal */
+ul li {
+  opacity: 0;
+  animation: slideInFromLeft var(--animation-duration) ease-out forwards;
+}
+
+/* Adjusting animation delay for sequential appearance */
+.portfolio-section > div, .portfolio-section > ul li {
+  animation-delay: calc(var(--animation-delay) * var(--item-index, 0));
+}
+
+/* We'll set --item-index in React for staggered animations */

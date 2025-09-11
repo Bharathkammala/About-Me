@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import Header from './components/Header';
+import Education from './components/Education';
+import Projects from './components/Projects';
+import Internships from './components/Internships';
+import Skills from './components/Skills';
+import Certifications from './components/Certifications';
+import Footer from './components/Footer'; // Optional, but good practice
+import './App.css'; // For global styles and animations
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="portfolio-container">
+      <Header />
+      <main>
+        <Education />
+        <Projects />
+        <Internships />
+        <Skills />
+        <Certifications />
+      </main>
+      <Footer />
     </div>
   );
 }

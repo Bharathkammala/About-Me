@@ -1,0 +1,12 @@
+/* src/components/Footer.css */
+.footer-section {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-top: 1px solid var(--border-color);
+  color: #777;
+  font-size: 0.9em;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 1.5s; /* Appear after main content */
+  opacity: 0;
+}
